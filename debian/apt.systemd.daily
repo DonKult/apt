@@ -90,6 +90,12 @@ check_stamp()
         return 0
     fi
 
+    if [ $interval = always ]; then
+	debug_echo "check_stamp: ignoring time stamp file, interval set to always"
+	# treat as enough time has passed
+        return 0
+    fi
+
     # compare midnight today to midnight the day the stamp was updated
     stamp_file="$stamp"
     stamp=$(date --date=$(date -r $stamp_file --iso-8601) +%s 2>/dev/null)
