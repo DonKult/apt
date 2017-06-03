@@ -47,6 +47,7 @@ Package-Revision
 Package-Type
 Pre-Depends
 Priority
+Protected
 Provides
 Recommended
 Recommends

@@ -176,7 +176,7 @@ class pkgCache								/*{{{*/
    
    struct Flag
    {
-      enum PkgFlags {Auto=(1<<0),Essential=(1<<3),Important=(1<<4)};
+      enum PkgFlags {Auto=(1<<0),Essential=(1<<3),Important=(1<<4),Protected=Important};
       enum PkgFFlags {
 	 NotSource=(1<<0), /*!< packages can't be fetched from here, e.g. dpkg/status file */
 	 LocalSource=(1<<1), /*!< local sources can't and will not be verified by hashes */
