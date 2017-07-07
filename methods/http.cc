@@ -266,6 +266,7 @@ bool CircleBuf::Write(string &Data)
    OutP += LeftWrite();
    return true;
 }
+									/*}}}*/
 // CircleBuf::Stats - Print out stats information			/*{{{*/
 // ---------------------------------------------------------------------
 /* */
@@ -327,7 +328,7 @@ struct HttpConnectFd : public MethodFd
 };
 
 bool UnwrapHTTPConnect(std::string Host, int Port, URI Proxy, std::unique_ptr<MethodFd> &Fd,
-		       unsigned long Timeout, aptMethod *Owner)
+		       unsigned long Timeout, aptAuthConfMethod *Owner)
 {
    Owner->Status(_("Connecting to %s (%s)"), "HTTP proxy", URI::SiteOnly(Proxy).c_str());
    // The HTTP server expects a hostname with a trailing :port
@@ -345,7 +346,6 @@ bool UnwrapHTTPConnect(std::string Host, int Port, URI Proxy, std::unique_ptr<Me
       Req << "Host: " << ProperHost << ":" << std::to_string(Proxy.Port) << "\r\n";
    else
       Req << "Host: " << ProperHost << "\r\n";
-   ;
 
    Owner->MaybeAddAuthTo(Proxy);
    if (Proxy.User.empty() == false || Proxy.Password.empty() == false)
