@@ -634,11 +634,12 @@ class pkgAcquire::UriIterator
 };
 									/*}}}*/
 /** \brief Information about the properties of a single acquire method.	{{{*/
+class MethodConfigPrivate;
 struct pkgAcquire::MethodConfig
 {
    /** \brief dpointer placeholder (for later in case we need it) */
-   void * const d;
-   
+   MethodConfigPrivate *const d;
+
    /** \brief The next link on the acquire method list.
     *
     *  \todo Why not an STL container?
@@ -687,6 +688,9 @@ struct pkgAcquire::MethodConfig
     *  appropriate.
     */
    MethodConfig();
+
+   APT_HIDDEN bool GetAuxRequests() const;
+   APT_HIDDEN void SetAuxRequests(bool const value);
 
    virtual ~MethodConfig();
 };
